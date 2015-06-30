@@ -33,7 +33,10 @@ class MY_Controller extends CI_Controller {
 		      $this->session->set_userdata('id', $auth['id']);
 		      $this->session->set_userdata('auth', 1);
 		      header('Location: /');
-		    }else header('Location: /');;
+		    }else{
+					setcookie("auth", "", time()-3600, '/');
+					header('Location: /');
+				}
 		  }
 		}
 		//Выход авторизированного пользователя.
